@@ -1,0 +1,26 @@
+name: Build
+
+on: push
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    outputs:
+      image_tag: ${{ steps.meta.outputs.tags }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Check out repository
+        uses: actions/checkout@v3
+        with:
+          repository: toga4/github-actions-workflows
+          ref: main
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          path: ./.github/actions/private
+
+      - name: Run my action
+        uses: ./.github/actions/private/.github/actions/build.yaml
+        with:
+          IMAGE_REPOSITORY: ghcr.io/use-private-workflow/hello
