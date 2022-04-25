@@ -25,5 +25,5 @@ jobs:
       - name: Run my action
         uses: ./.github/actions/private-actions/build-image
         with:
-          IMAGE_REPOSITORY: ghcr.io/use-private-workflow/hello
+          IMAGE_REPOSITORY: ghcr.io/toga4/use-private-workflow/hello
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
