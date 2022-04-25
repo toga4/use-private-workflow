@@ -18,9 +18,11 @@ jobs:
           repository: toga4/github-actions-workflows
           ref: main
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          path: ./.github/actions/private
+          path: ./.github/actions/private-actions
+
+      - run: ls -al
 
       - name: Run my action
-        uses: ./.github/actions/private/.github/actions/build.yaml
+        uses: ./.github/actions/private-actions/build-image
         with:
           IMAGE_REPOSITORY: ghcr.io/use-private-workflow/hello
